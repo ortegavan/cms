@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.previa {
+    margin: auto;
+    margin-top: 20px;
+    width: 920px;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pagina {
+    width: 920px;
+    padding: 20px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo {
+    border: solid 1px #fff;
+    cursor: pointer;
+    padding: 12px;
+}
+
+.conteudo:hover,
+.selecionado {
+    border: solid 1px #ff3f80;
+    border-radius: 4px;
+}
+
+.invisivel {
+    display: none !important;
+}
+
+.h1 {
+    font-size: 24px !important;
+    font-weight: normal;
+}
+
+.p {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.link {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #0000ff;
+}
+
+.btn-principal {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    max-width: fit-content;
+}

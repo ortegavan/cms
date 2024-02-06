@@ -1,0 +1,129 @@
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.topo,
+.container > div {
+    padding: 20px;
+}
+
+.menu-lateral {
+    width: 430px;
+}
+
+.conteudo-central {
+    width: 100%;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+}
+
+.componentes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 12px;
+}
+
+.componente {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.componente img {
+    width: 32px;
+    height: 32px;
+}
+
+.componente:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+.menu-flutuante {
+    display: flex;
+    gap: 12px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    padding: 12px;
+    color: #333 !important;
+}
+
+.btn-editor {
+    cursor: pointer;
+    padding: 12px 32px;
+    border-radius: 4px;
+    border: solid 1px #333;
+    color: #333;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.btn-icone {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.btn-icone:hover {
+    background-color: #eaeaea;
+}
+
+.btn-icone i {
+    font-size: 16px;
+}
+
+.btn-icone-selecionado {
+    border: solid 1px #ff3f80;
+    color: #ff3f80;
+}
+
+.divisor {
+    width: 1px;
+    height: 32px;
+    background-color: #ccc;
+}
+
+.vermelho {
+    color: #ff3f80;
+}
+
+.input-texto {
+    border: none;
+    outline: none;
+    color: #333;
+    background-color: transparent;
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+}
+
+.input-url {
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    outline: none;
+    color: #333;
+    background-color: transparent;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    width: 200px;
+}

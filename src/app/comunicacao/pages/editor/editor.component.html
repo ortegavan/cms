@@ -1,0 +1,100 @@
+<div class="topo">
+    <h1>
+        POC
+    </h1>
+    <div>
+        <button class="btn-editor" (click)="visualizar()">
+            Visualizar
+        </button>
+    </div>
+</div>
+<div class="container">
+    <div class="menu-lateral">
+        <h2>
+            Conteúdo
+        </h2>
+        <div class="componentes" cdkDropList [cdkDropListData]="{ lista: componentes }" [cdkDropListConnectedTo]="destino" [cdkDropListSortingDisabled]="true" (cdkDropListEntered)="entered()" (cdkDropListDropped)="drop1($event)" (cdkDropListExited)="exited($event)">
+            <ng-container *ngFor="let componente of componentes">
+                <div class="componente" cdkDrag [cdkDragData]="{ item: componente }">
+                    <img [src]="'assets/'+ componente.icone" alt="conteúdos">
+                    <p>
+                        {{ componente.texto }}
+                    </p>
+                </div>
+                <div class="componente" *ngIf="componente.codigo == temporario.codigo">
+                    <img [src]="'assets/'+ componente.icone" alt="conteúdos">
+                    <p>
+                        {{ componente.texto }}
+                    </p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="conteudo-central">
+        <div class="pagina" cdkDropList (cdkDropListDropped)="drop2($event)" [cdkDropListData]="{ lista: pagina }" #container #destino="cdkDropList">
+            <ng-container *ngFor="let item of pagina">
+                <div class="conteudo" cdkDrag #itens [class.selecionado]="item.selecionado" cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="abrirToolbar(trigger, item)">
+                    <input type="text" [name]="'input' + item.id" [id]="'input' + item.id" [ngClass]="item.classe" *ngIf="item.editavel" [value]="item.texto" (focusout)="encerrarEdicao(item)" class="input-texto" />
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuFlutuante.trigger" [cdkConnectedOverlayOpen]="menuFlutuante.aberto">
+    <div class="menu-flutuante">
+        <button class="btn-icone" (click)="alternarNegrito(menuFlutuante.conteudo)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.negrito">
+            <i class="fa-solid fa-bold"></i>
+        </button>
+        <button class="btn-icone" (click)="alternarItalico(menuFlutuante.conteudo)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.italico">
+            <i class="fa-light fa-italic"></i>
+        </button>
+        <button class="btn-icone" (click)="alternarSublinhado(menuFlutuante.conteudo)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.sublinhado">
+            <i class="fa-light fa-underline"></i>
+        </button>
+
+        <div class="divisor"></div>
+
+        <button class="btn-icone" (click)="alternarAlinhamento(menuFlutuante.conteudo, 0)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.alinhamento == 0">
+            <i class="fa-light fa-align-left"></i>
+        </button>
+        <button class="btn-icone" (click)="alternarAlinhamento(menuFlutuante.conteudo, 1)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.alinhamento == 1">
+            <i class="fa-light fa-align-center"></i>
+        </button>
+        <button class="btn-icone" (click)="alternarAlinhamento(menuFlutuante.conteudo, 2)" [class.btn-icone-selecionado]="menuFlutuante.conteudo.formatacao.alinhamento == 2">
+            <i class="fa-light fa-align-right"></i>
+        </button>
+
+        <div class="divisor"></div>
+
+        <button class="btn-icone" ngx-colors-trigger [(ngModel)]="menuFlutuante.conteudo.formatacao.cor" [style.color]="menuFlutuante.conteudo.formatacao.cor == '#ffffff' ? '#ccc' : menuFlutuante.conteudo.formatacao.cor" (ngModelChange)="aplicarCor(menuFlutuante.conteudo)">
+            <i class="fa-solid fa-droplet"></i>
+        </button>
+
+        <ng-container *ngIf="menuFlutuante.conteudo.tipo == 3">
+            <button class="btn-icone" ngx-colors-trigger [(ngModel)]="menuFlutuante.conteudo.formatacao.corFundo" [style.color]="menuFlutuante.conteudo.formatacao.corFundo == '#ffffff' ? '#ccc' : menuFlutuante.conteudo.formatacao.corFundo" (ngModelChange)="aplicarCorFundo(menuFlutuante.conteudo)">
+                <i class="fa-solid fa-fill"></i>
+            </button>
+        </ng-container>
+
+        <ng-container *ngIf="menuFlutuante.conteudo.tipo == 3 || menuFlutuante.conteudo.tipo == 4">
+            <div class="divisor"></div>
+            <input type="text" name="url" id="url" placeholder="http://" class="input-url" [(ngModel)]="menuFlutuante.conteudo.url" />
+            <mat-checkbox [(ngModel)]="menuFlutuante.conteudo.novaJanela">
+                Abrir link em nova janela
+            </mat-checkbox>
+        </ng-container>
+
+        <div class="divisor"></div>
+
+        <button class="btn-icone">
+            <i class="fa-light fa-trash-can vermelho" (click)="excluir(menuFlutuante.conteudo)"></i>
+        </button>
+
+        <div class="divisor"></div>
+
+        <button class="btn-icone" (click)="fecharToolbar()">
+            <i class="fa-light fa-check"></i>
+        </button>
+    </div>
+</ng-template>
