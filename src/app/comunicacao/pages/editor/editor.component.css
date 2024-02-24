@@ -41,7 +41,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 1px #ccc;
+    border: solid 1px #333 !important;
     border-radius: 4px;
     padding: 12px;
 }
@@ -54,6 +54,12 @@
 .componente:hover {
     background-color: #eaeaea;
     cursor: pointer;
+}
+
+.inativo {
+    filter: invert(67%) sepia(1%) saturate(4542%) hue-rotate(107deg)
+        brightness(90%) contrast(90%);
+    border: dotted 1px #000 !important;
 }
 
 .menu-flutuante {

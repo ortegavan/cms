@@ -15,13 +15,13 @@
         </h2>
         <div class="componentes" cdkDropList [cdkDropListData]="{ lista: componentes }" [cdkDropListConnectedTo]="destino" [cdkDropListSortingDisabled]="true" (cdkDropListEntered)="entered()" (cdkDropListDropped)="drop1($event)" (cdkDropListExited)="exited($event)">
             <ng-container *ngFor="let componente of componentes">
-                <div class="componente" cdkDrag [cdkDragData]="{ item: componente }">
+                <div class="componente" cdkDrag [cdkDragData]="{ item: componente }" [class.inativo]="componente.inativo">
                     <img [src]="'assets/'+ componente.icone" alt="conteúdos">
                     <p>
                         {{ componente.texto }}
                     </p>
                 </div>
-                <div class="componente" *ngIf="componente.codigo == temporario.codigo">
+                <div class="componente" *ngIf="componente.codigo == temporario.codigo" [class.inativo]="componente.inativo">
                     <img [src]="'assets/'+ componente.icone" alt="conteúdos">
                     <p>
                         {{ componente.texto }}
